@@ -1,0 +1,26 @@
+{
+  "name": "github_profile_angular-material",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torzuoliH/github_profile_angular-material.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/torzuoliH/github_profile_angular-material/issues"
+  },
+  "homepage": "https://github.com/torzuoliH/github_profile_angular-material#readme",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-material": "^1.1.4",
+    "angular-route": "^1.6.5"
+  }
+}
