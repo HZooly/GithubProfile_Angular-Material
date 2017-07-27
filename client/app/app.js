@@ -1,9 +1,12 @@
 let app = angular.module('githubMaterial', ['ngMaterial', 'ngRoute', 'ngAnimate', 'ngAria']);
 
 app.config(config);
-config.$inject = ['$routeProvider', '$locationProvider'];
+config.$inject = ['$routeProvider', '$locationProvider', '$mdThemingProvider'];
 
-function config($routeProvider, $locationProvider) {
+function config($routeProvider, $locationProvider, $mdThemingProvider) {
+
+	$mdThemingProvider.theme('default')
+	.primaryPalette('teal');
 
 	$locationProvider.hashPrefix('');
 
