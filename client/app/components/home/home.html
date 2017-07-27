@@ -1,42 +1,51 @@
 <div ng-controller="homeController as home" ng-cloak>
 	<md-content class="md-padding">
 		<md-nav-bar md-selected-nav-item="home.current" nav-bar-aria-label="navigation links">
+			<md-nav-item md-nav-click="home.setCurrent('Search')" name="Search">
+				Search
+			</md-nav-item>
 			<md-nav-item md-nav-click="home.setCurrent('User')" name="User">
 				User informations
 			</md-nav-item>
 			<md-nav-item md-nav-click="home.setCurrent('Stars')" name="Stars">
 				Stars
 			</md-nav-item>
-			<md-nav-item md-nav-click="home.setCurrent('More')" name="More">
-				More
-			</md-nav-item>
 		</md-nav-bar>
 
 		<div class="ext-content">
+
+			<div ng-if="home.current === 'Search'">
+				<md-input-container>
+					<label>User</label>
+					<input ng-model="home.searchUser">
+				</md-input-container>
+				<md-button ng-click="home.search()" class="md-icon-button" aria-label="Search">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</md-button>
+			</div>
+
 			<div flex-offset="25" flex="50" layout="column" ng-if="home.current === 'User'">
 				<md-card>
 					<md-card-title>
 						<md-card-title-text>
-							<span class="md-headline">torzuoliH</span>
-							<span class="md-subhead">Member since 2014</span>
+							<span class="md-headline">{{home.user.login}} <a href="{{home.user.html_url}}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></span>
+							<span class="md-subhead">Created at: {{home.user.created_at | date}}</span>
+							<span class="md-subhead">{{home.user.public_repos}} public repositories</span>
+							<span ng-if="home.user.location != null"class="md-body-2">From {{home.user.location}}</span>
 						</md-card-title-text>
 						<md-card-title-media>
-							<div class="md-media-lg card-media"><img src="https://avatars1.githubusercontent.com/u/7328625?v=4" /></div>
+							<div class="md-media-lg card-media"><img src="{{home.user.avatar_url}}" /></div>
 						</md-card-title-media>
 					</md-card-title>
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button>11 Followers</md-button>
-						<md-button>7601010101010 Following</md-button>
+						<md-button>{{home.user.followers}} Followers</md-button>
+						<md-button>{{home.user.following}} Following</md-button>
 					</md-card-actions>
 				</md-card>
 			</div>
 
 			<div ng-if="home.current === 'Stars'">
-				 Stars List
-			</div>
-
-			<div ng-if="home.current === 'More'">
-				 More about something
+				Stars List
 			</div>
 		</div>
 

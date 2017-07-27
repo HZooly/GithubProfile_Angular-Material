@@ -1,3 +1,8 @@
 #homeText{
 	cursor: pointer;
 }
+
+a{
+	color:black;
+	text-decoration: none;
+}
