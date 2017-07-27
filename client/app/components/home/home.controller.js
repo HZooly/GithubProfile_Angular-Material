@@ -17,6 +17,7 @@ function homeController($http, $mdToast) {
 	function init() {
 		me.searchUser = 'torzuoliH';
 		search();
+		me.searchUser = '';
 		me.setCurrent('User');
 	}
 
