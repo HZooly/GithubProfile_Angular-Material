@@ -3,8 +3,12 @@
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 	<body ng-app="githubMaterial">
+
+  <!-- SCRIPTS LOAD -->
 
 	<script src="../node_modules/angular/angular.min.js"></script>
 	<script src="../node_modules/angular-aria/angular-aria.min.js"></script>
@@ -14,7 +18,12 @@
 
 	<script src="app/app.js"></script>
 
-	<script src="app/components/home/home.controller.js"></script>
+	<script src="app/components/templates/navbar.controller.js"></script>
+  <script src="app/components/home/home.controller.js"></script>
+
+  <!-- END SCRIPTS LOAD -->
+
+  <ng-include src="'app/components/templates/navbar.html'"></ng-include>
 
 	<div ng-view></div>
 
