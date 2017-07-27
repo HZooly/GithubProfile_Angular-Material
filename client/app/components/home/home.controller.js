@@ -17,7 +17,6 @@ function homeController($http, $mdToast) {
 	function init() {
 		me.searchUser = 'torzuoliH';
 		search();
-		me.searchUser = '';
 		me.setCurrent('User');
 	}
 
@@ -55,6 +54,7 @@ function homeController($http, $mdToast) {
 		console.log(data);
 		me.user = data;
 		me.setCurrent('User');
+		me.searchUser = '';
 	}
 
 	init();
