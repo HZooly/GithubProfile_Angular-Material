@@ -8,6 +8,8 @@ function homeController($http, $mdToast) {
 	me.current;
 	me.searchUser;
 	me.user;
+	me.starLoading;
+	me.userLoading;
 
 	me.init = init;
 	me.setCurrent = setCurrent;
@@ -19,6 +21,8 @@ function homeController($http, $mdToast) {
 		me.searchUser = 'torzuoliH';
 		search();
 		me.setCurrent('User');
+		me.starLoading = false;
+		me.userLoading = false;
 	}
 
 	function setCurrent(tab) {
@@ -26,6 +30,7 @@ function homeController($http, $mdToast) {
 	}
 
 	function search() {
+		me.userLoading = true;
 		$http({
 			method: 'GET',
 			url: 'https://api.github.com/users/' + me.searchUser
@@ -52,6 +57,7 @@ function homeController($http, $mdToast) {
 	}
 
 	function getStars(){
+		me.starLoading = true;
 		var url = 'https://api.github.com/users/' + me.user.login + '/starred?page=1&per_page=100';
 		$http({
 			method:'GET',
@@ -59,6 +65,7 @@ function homeController($http, $mdToast) {
 		}).then(function(response){
 			console.log(response);
 			me.stars = response.data;
+			me.starLoading = false;
 		}).catch(function(error){
 			// TOASTS
 		});
@@ -67,6 +74,7 @@ function homeController($http, $mdToast) {
 	function fetchData(data) {
 		console.log(data);
 		me.user = data;
+		me.userLoading = false;
 		me.setCurrent('User');
 		me.searchUser = '';
 	}

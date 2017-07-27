@@ -25,7 +25,10 @@
 			</div>
 
 			<div flex-offset="25" flex="50" layout="column" ng-if="home.current === 'User'">
-				<md-card>
+				<div ng-if="home.userLoading" layout="row" layout-sm="column" layout-align="space-around">
+					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+				</div>
+				<md-card ng-if="!home.userLoading">
 					<md-card-title>
 						<md-card-title-text>
 							<span class="md-headline">{{home.user.login}} <a href="{{home.user.html_url}}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></span>
@@ -45,7 +48,11 @@
 			</div>
 
 			<div ng-if="home.current === 'Stars'">
-				<md-table-container>
+				<div ng-if="home.starLoading" layout="row" layout-sm="column" layout-align="space-around">
+					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+				</div>
+
+				<md-table-container ng-if="!home.starLoading">
 					<table md-table>
 						<thead md-head>
 							<tr md-row>
