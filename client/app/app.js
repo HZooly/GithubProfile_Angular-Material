@@ -1,4 +1,4 @@
-let app = angular.module('githubMaterial', ['ngMaterial', 'ngRoute', 'ngAnimate', 'ngAria']);
+let app = angular.module('githubMaterial', ['ngMaterial', 'ngRoute', 'ngAnimate', 'ngAria', 'md.data.table']);
 
 app.config(config);
 config.$inject = ['$routeProvider', '$locationProvider', '$mdThemingProvider'];

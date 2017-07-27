@@ -13,6 +13,7 @@ function homeController($http, $mdToast) {
 	me.setCurrent = setCurrent;
 	me.search = search;
 	me.fetchData = fetchData;
+	me.getStars = getStars;
 
 	function init() {
 		me.searchUser = 'torzuoliH';
@@ -47,6 +48,19 @@ function homeController($http, $mdToast) {
 					.hideDelay(3000)
 				);
 			}
+		});
+	}
+
+	function getStars(){
+		var url = 'https://api.github.com/users/' + me.user.login + '/starred?page=1&per_page=100';
+		$http({
+			method:'GET',
+			url: url
+		}).then(function(response){
+			console.log(response);
+			me.stars = response.data;
+		}).catch(function(error){
+			// TOASTS
 		});
 	}
 
