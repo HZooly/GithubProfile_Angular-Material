@@ -32,12 +32,22 @@ function homeController($http, $mdToast) {
 		}).then(function(response) {
 			fetchData(response.data);
 		}).catch(function(error) {
-			$mdToast.show(
-				$mdToast.simple()
-				.textContent('User not found!')
-				.position('bottom')
-				.hideDelay(3000)
-			);
+			if(error.status == 403){
+				$mdToast.show(
+					$mdToast.simple()
+					.textContent('Rate limit exceeded for this IP!')
+					.position('bottom')
+					.hideDelay(3000)
+				);
+			}
+			if(error.status == 404){
+				$mdToast.show(
+					$mdToast.simple()
+					.textContent('User unknown!')
+					.position('bottom')
+					.hideDelay(3000)
+				);
+			}
 		});
 	}
 
