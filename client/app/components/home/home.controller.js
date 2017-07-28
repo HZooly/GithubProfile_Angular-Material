@@ -96,7 +96,8 @@ function homeController($http, $mdToast, $mdDialog) {
 				templateUrl: 'app/components/home/tabs/user/dialog/followers.dialog.html',
 				clickOutsideToClose: true,
 				locals:{
-					urlFollowers: me.user.followers_url
+					urlFollowers: me.user.followers_url,
+					userLogin: me.user.login 
 				}
 			})
 			.then(function(answer) {
