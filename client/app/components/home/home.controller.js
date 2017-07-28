@@ -31,42 +31,51 @@ function homeController($http, $mdToast) {
 
 	function search() {
 		me.userLoading = true;
-		$http({
-			method: 'GET',
-			url: 'https://api.github.com/users/' + me.searchUser
-		}).then(function(response) {
-			fetchData(response.data);
-		}).catch(function(error) {
-			if(error.status == 403){
-				$mdToast.show(
-					$mdToast.simple()
-					.textContent('Rate limit exceeded for this IP!')
-					.position('bottom')
-					.hideDelay(3000)
-				);
-			}
-			if(error.status == 404){
-				$mdToast.show(
-					$mdToast.simple()
-					.textContent('User unknown!')
-					.position('bottom')
-					.hideDelay(3000)
-				);
-			}
-		});
+		if (me.searchUser === '') {
+			$mdToast.show(
+				$mdToast.simple()
+				.textContent('User can\'t be empty!')
+				.position('bottom')
+				.hideDelay(3000)
+			);
+		} else {
+			$http({
+				method: 'GET',
+				url: 'https://api.github.com/users/' + me.searchUser
+			}).then(function(response) {
+				fetchData(response.data);
+			}).catch(function(error) {
+				if (error.status == 403) {
+					$mdToast.show(
+						$mdToast.simple()
+						.textContent('Rate limit exceeded for this IP!')
+						.position('bottom')
+						.hideDelay(3000)
+					);
+				}
+				if (error.status == 404) {
+					$mdToast.show(
+						$mdToast.simple()
+						.textContent('User unknown!')
+						.position('bottom')
+						.hideDelay(3000)
+					);
+				}
+			});
+		}
 	}
 
-	function getStars(){
+	function getStars() {
 		me.starLoading = true;
 		var url = 'https://api.github.com/users/' + me.user.login + '/starred?page=1&per_page=100';
 		$http({
-			method:'GET',
+			method: 'GET',
 			url: url
-		}).then(function(response){
+		}).then(function(response) {
 			console.log(response);
 			me.stars = response.data;
 			me.starLoading = false;
-		}).catch(function(error){
+		}).catch(function(error) {
 			// TOASTS
 		});
 	}
