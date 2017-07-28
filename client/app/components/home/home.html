@@ -66,10 +66,10 @@
 						<tbody md-body>
 							<tr md-row ng-repeat="star in home.stars">
 								<td md-cell>
-									{{star.name}}
+									<strong><a href="{{star.html_url}}" target="_blank">{{star.name}}</a></strong>
 								</td>
 								<td md-cell>
-									{{star.owner.login}}
+									<a href="{{star.owner.html_url}}" target="_blank">{{star.owner.login}}</a>
 								</td>
 								<td md-cell>
 									{{star.forks}}
