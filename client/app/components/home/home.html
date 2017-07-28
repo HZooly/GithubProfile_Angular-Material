@@ -6,15 +6,15 @@
 		<div class="ext-content">
 
 			<div ng-if="home.current === 'Search'">
-				<ng-include src="'app/components/home/tabs/search.html'"></ng-include>
+				<ng-include src="'app/components/home/tabs/search/search.html'"></ng-include>
 			</div>
 
 			<div flex-offset="25" flex="50" layout="column" ng-if="home.current === 'User'">
-				<ng-include src="'app/components/home/tabs/user.html'"></ng-include>
+				<ng-include src="'app/components/home/tabs/user/user.html'"></ng-include>
 			</div>
 
 			<div ng-if="home.current === 'Stars'">
-				<ng-include src="'app/components/home/tabs/stars.html'"></ng-include>
+				<ng-include src="'app/components/home/tabs/stars/stars.html'"></ng-include>
 			</div>
 		</div>
 

@@ -14,7 +14,7 @@
 		</md-card-title-media>
 	</md-card-title>
 	<md-card-actions layout="row" layout-align="end center">
-		<md-button>{{home.user.followers}} Followers</md-button>
+		<md-button ng-click="home.openFollowersDialog()">{{home.user.followers}} Followers</md-button>
 		<md-button>{{home.user.following}} Following</md-button>
 	</md-card-actions>
 </md-card>

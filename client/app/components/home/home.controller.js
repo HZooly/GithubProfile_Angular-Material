@@ -1,8 +1,8 @@
 angular.module('githubMaterial').controller('homeController', homeController);
 
-homeController.$inject = ['$http', '$mdToast'];
+homeController.$inject = ['$http', '$mdToast', '$mdDialog'];
 
-function homeController($http, $mdToast) {
+function homeController($http, $mdToast, $mdDialog) {
 	let me = this;
 
 	me.current;
@@ -14,8 +14,9 @@ function homeController($http, $mdToast) {
 	me.init = init;
 	me.setCurrent = setCurrent;
 	me.search = search;
-	me.fetchData = fetchData;
+	me.fetchDataUser = fetchDataUser;
 	me.getStars = getStars;
+	me.openFollowersDialog = openFollowersDialog;
 
 	function init() {
 		me.searchUser = 'torzuoliH';
@@ -43,7 +44,7 @@ function homeController($http, $mdToast) {
 				method: 'GET',
 				url: 'https://api.github.com/users/' + me.searchUser
 			}).then(function(response) {
-				fetchData(response.data);
+				fetchDataUser(response.data);
 			}).catch(function(error) {
 				if (error.status == 403) {
 					$mdToast.show(
@@ -80,12 +81,29 @@ function homeController($http, $mdToast) {
 		});
 	}
 
-	function fetchData(data) {
+	function fetchDataUser(data) {
 		console.log(data);
 		me.user = data;
 		me.userLoading = false;
 		me.setCurrent('User');
 		me.searchUser = '';
+	}
+
+	function openFollowersDialog() {
+		$mdDialog.show({
+				controller: followersDialogController,
+				controllerAs: 'followersDialog',
+				templateUrl: 'app/components/home/tabs/user/dialog/followers.dialog.html',
+				clickOutsideToClose: true,
+				locals:{
+					urlFollowers: me.user.followers_url
+				}
+			})
+			.then(function(answer) {
+				// $scope.status = 'You said the information was "' + answer + '".';
+			}, function() {
+				// $scope.status = 'You cancelled the dialog.';
+			});
 	}
 
 	init();
