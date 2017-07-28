@@ -1,0 +1,20 @@
+<div ng-if="home.userLoading" layout="row" layout-sm="column" layout-align="space-around">
+	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<md-card ng-if="!home.userLoading">
+	<md-card-title>
+		<md-card-title-text>
+			<span class="md-headline">{{home.user.login}} <a href="{{home.user.html_url}}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></span>
+			<span class="md-subhead">Created at: {{home.user.created_at | date}}</span>
+			<span class="md-subhead">{{home.user.public_repos}} public repositories</span>
+			<span ng-if="home.user.location != null" class="md-body-2">From {{home.user.location}}</span>
+		</md-card-title-text>
+		<md-card-title-media>
+			<div class="md-media-lg card-media"><img ng-src="{{home.user.avatar_url}}" /></div>
+		</md-card-title-media>
+	</md-card-title>
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button>{{home.user.followers}} Followers</md-button>
+		<md-button>{{home.user.following}} Following</md-button>
+	</md-card-actions>
+</md-card>
