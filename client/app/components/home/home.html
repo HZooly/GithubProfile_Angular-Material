@@ -1,16 +1,7 @@
 <div ng-controller="homeController as home" ng-cloak>
 	<md-content class="md-padding">
-		<md-nav-bar md-selected-nav-item="home.current" nav-bar-aria-label="navigation links">
-			<md-nav-item md-nav-click="home.setCurrent('Search')" name="Search">
-				Search
-			</md-nav-item>
-			<md-nav-item md-nav-click="home.setCurrent('User')" name="User">
-				User informations
-			</md-nav-item>
-			<md-nav-item md-nav-click="home.setCurrent('Stars'); home.getStars()" name="Stars">
-				Stars
-			</md-nav-item>
-		</md-nav-bar>
+
+		<ng-include src="'app/components/templates/tabs.html'"></ng-include>
 
 		<div class="ext-content">
 
