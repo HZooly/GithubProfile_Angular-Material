@@ -22,7 +22,10 @@ function followersDialogController($scope, $mdDialog, $http, urlFollowers, userL
 			method: 'GET',
 			url: me.url
 		}).then(function(response){
+			console.log(response);
 			me.list = response.data;
+		}).catch(function(error){
+			console.log(error);
 		});
 	}
 

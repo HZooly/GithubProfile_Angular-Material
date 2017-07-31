@@ -94,16 +94,14 @@ function homeController($http, $mdToast, $mdDialog) {
 				controller: followersDialogController,
 				controllerAs: 'followersDialog',
 				templateUrl: 'app/components/home/tabs/user/dialog/followers.dialog.html',
+				parent: angular.element(document.body),
 				clickOutsideToClose: true,
 				locals:{
 					urlFollowers: me.user.followers_url,
-					userLogin: me.user.login 
+					userLogin: me.user.login
 				}
 			})
 			.then(function(answer) {
-				// $scope.status = 'You said the information was "' + answer + '".';
-			}, function() {
-				// $scope.status = 'You cancelled the dialog.';
 			});
 	}
 
