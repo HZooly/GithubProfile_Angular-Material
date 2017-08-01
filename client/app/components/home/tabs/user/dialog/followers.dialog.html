@@ -11,7 +11,11 @@
 		</md-toolbar>
 
 		<md-dialog-content>
-			<div class="md-dialog-content">
+			<div ng-if="followersDialog.followersLoading" layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+			</div>
+
+			<div ng-if="!followersDialog.followersLoading" class="md-dialog-content">
 				<md-list flex>
 					<md-list-item href="{{follower.html_url}}" target="_blank" class="md-3-line" ng-repeat="follower in followersDialog.list">
 						<img ng-src="{{follower.avatar_url}}" class="md-avatar" alt="Avatar {{follower.login}}" />
