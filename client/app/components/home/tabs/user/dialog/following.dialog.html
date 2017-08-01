@@ -1,0 +1,37 @@
+<md-dialog aria-label="Following" flex="66">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Following</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content>
+			<div ng-if="followingDialog.followingLoading" layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+			</div>
+
+			<div ng-if="!followingDialog.followingsLoading" class="md-dialog-content">
+				<md-list flex>
+					<md-list-item href="{{following.html_url}}" target="_blank" class="md-3-line" ng-repeat="following in followingDialog.list">
+						<img ng-src="{{following.avatar_url}}" class="md-avatar" alt="Avatar {{following.login}}" />
+						<div class="md-list-item-text" layout="column">
+							<h3>{{ following.login }}</h3>
+						</div>
+					</md-list-item>
+				</md-list>
+
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<md-button href="{{followingDialog.followingLink}}" target="_blank">
+				See on Github
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

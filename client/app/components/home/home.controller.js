@@ -17,6 +17,7 @@ function homeController($http, $mdToast, $mdDialog) {
 	me.fetchDataUser = fetchDataUser;
 	me.getStars = getStars;
 	me.openFollowersDialog = openFollowersDialog;
+	me.openFollowingDialog = openFollowingDialog;
 
 	function init() {
 		me.searchUser = 'torzuoliH';
@@ -96,13 +97,26 @@ function homeController($http, $mdToast, $mdDialog) {
 				templateUrl: 'app/components/home/tabs/user/dialog/followers.dialog.html',
 				parent: angular.element(document.body),
 				clickOutsideToClose: true,
-				locals:{
+				locals: {
 					urlFollowers: me.user.followers_url,
 					userLogin: me.user.login
 				}
 			})
-			.then(function(answer) {
-			});
+			.then(function(answer) {});
+	}
+
+	function openFollowingDialog() {
+		$mdDialog.show({
+				controller: followingDialogController,
+				controllerAs: 'followingDialog',
+				templateUrl: 'app/components/home/tabs/user/dialog/following.dialog.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose: true,
+				locals: {
+					userLogin: me.user.login
+				}
+			})
+			.then(function(answer) {});
 	}
 
 	init();
